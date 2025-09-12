@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSignIn,
-  faChevronDown,
-  faChevronUp,
-  faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { ChevronDown } from "lucide-react"; 
 import logo from "../../public/main-logo.png"; // Adjust the path to your logo image
 import {
   faBookOpen,
@@ -24,6 +19,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Footer from "../Components/Footer";
+import Header from "../Components/Header";
 function Contact() {
   const navItems = [
     { label: "Features", to: "/#features" }, // scrolls to #features
@@ -59,334 +55,416 @@ function Contact() {
 
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggle = (index) => {
+  const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
   return (
     <>
-      <div className="shadow-md w-full fixed top-0 left-0 bg-slate-700/100 z-50">
-        <header className="md:flex items-center justify-between py-4 px-8">
-          {/* Left: Rotating Logo */}
-          <div className="flex items-center gap-3">
-            {/* Rotating logo with fixed image inside */}
-            <div className="relative w-14 h-14 flex-shrink-0">
-              {/* Fixed image inside */}
-              <div className="absolute inset-0 z-10 flex items-center justify-center">
-                <img
-                  src={logo}
-                  alt="Logo"
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-              </div>
-
-              {/* Rotating border ring */}
-              <div className="w-full h-full rounded-full animate-spin-slow border-[3px] border-t-red-500 border-r-blue-500 border-b-transparent border-l-yellow-500"></div>
-            </div>
-
-            {/* Gradient Brand Text */}
-            <span className="text-4xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent">
-              CINECMS
-            </span>
-          </div>
-
-          {/* Center: Navigation Links */}
-          <ul className="flex flex-wrap gap-6 justify-center mt-4 md:mt-0">
-            {navItems.map((item, idx) => {
-              const LinkComponent = item.hash ? HashLink : Link;
-              const to = item.hash ? `#${item.hash}` : item.to;
-
-              return (
-                <li key={idx}>
-                  <LinkComponent
-                    smooth
-                    to={to}
-                    className="relative px-3 py-1 text-gray-100 font-medium cursor-pointer group transition-all duration-300
-                      before:content-[''] before:absolute before:inset-0 before:scale-x-0 before:bg-blue-900 before:rounded before:z-0 before:transition-transform before:duration-300
-                      group-hover:before:scale-x-100"
-                  >
-                    <span className="relative z-10 flex items-center gap-1">
-                      {item.icon && (
-                        <FontAwesomeIcon icon={item.icon} className="w-4 h-4" />
-                      )}
-                      {item.label}
-                    </span>
-                  </LinkComponent>
-                </li>
-              );
-            })}
-          </ul>
-
-          {/* Right: Login & Signup Buttons */}
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-2xl hover:scale-105 transform transition duration-300 shadow-lg">
-              <FontAwesomeIcon icon={faSignIn} />
-              Login
-            </button>
-            <button className="flex items-center gap-2 px-4 py-2 border-2 border-indigo-500 text-indigo-500 rounded-2xl hover:bg-indigo-500 hover:text-white transition-all duration-300 shadow-md hover:scale-105">
-              <FontAwesomeIcon icon={faUserPlus} />
-              Sign Up
-            </button>
-          </div>
-        </header>
+      <div className="min-h-screen relative overflow-hidden bg-slate-900 text-white flex flex-col">
+        <div
+  className="absolute w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(192,132,252,0.3),_transparent_40%)] -z-10 filter blur-3xl"
+  style={{
+    opacity: 0,
+    top: '20%',
+    left: '30%',
+    transform: 'translateX(-50%) translateY(-50%) scale(0.867232) translateZ(0px)',
+  }}
+></div>
+<div
+  className="absolute w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,_rgba(236,72,153,0.2),_transparent_50%)] -z-10 filter blur-3xl"
+  style={{
+    opacity: 0,
+    top: '80%',
+    left: '70%',
+    transform: 'translateX(-50%) translateY(-50%) scale(0.99999) translateZ(0px)',
+  }}
+></div>
+<Header/>
+        <main className="flex-grow pt-28 md:pt-32">
+          <section className="container mx-auto px-4 md:px-8 py-12" style={{opacity: 1, transform: 'none'}}>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-center tracking-tight text-cyan-400">Worldwide Music, Video &amp; Movie Distribution</h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 text-center">Empowering Independent Artists and Labels with AI-Powered Strategies, Cutting-Edge Technology, and Robust Royalty Collection.</p>
+         <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="bg-slate-900/60 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-8 rounded-2xl" style={{ opacity: 1, transform: 'none' }}>
+  <h3 className="text-2xl font-semibold mb-6 text-pink-400 flex items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3">
+      <path d="m22 2-7 20-4-9-9-4Z"></path>
+      <path d="M22 2 11 13"></path>
+    </svg>
+    Send Us a Message
+  </h3>
+  <form className="space-y-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label htmlFor="name" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+          Full Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          placeholder="Your Name"
+          value=""
+          className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+        />
       </div>
-      <main className="flex-grow bg-black px-9 pt-28 md:pt-32">
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="container mx-auto px-4 md:px-8 py-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-center tracking-tight text-cyan-400">
-            Worldwide Music, Video &amp; Movie Distribution
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 text-center">
-            Empowering Independent Artists and Labels with AI-Powered
-            Strategies, Cutting-Edge Technology, and Robust Royalty Collection.
-          </p>
-        </motion.section>
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-slate-900/60 mb-5 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-8 rounded-2xl md:col-span-2">
-              <h3 className="text-2xl font-semibold mb-6 text-pink-400 flex items-center">
-                {" "}
-                Send Us a Message
-              </h3>
-              <form action="" className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
-                      name="name"
-                      id="name"
-                      required=""
-                      placeholder="Your Name"
-                      value=""
-                    ></input>
-                  </div>
-                  <div>
-                    <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
-                      name="email"
-                      id="email"
-                      required=""
-                      placeholder="you@example.com"
-                      value=""
-                    />
-                  </div>
-                  <div>
-                    <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
-                      Department
-                    </label>
-                    <button
-                      type="button"
-                      role="combobox"
-                      aria-controls="radix-:r0:"
-                      aria-expanded="false"
-                      aria-autocomplete="none"
-                      dir="ltr"
-                      data-state="closed"
-                      data-placeholder=""
-                      className="flex h-10 items-center justify-between border text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
-                    >
-                      <span>Select a department...</span>
-                    </button>
-                    <select aria-hidden="true" name="department">
-                      <option value="support">General Support</option>
-                      <option value="sales">Sales &amp; Partnerships</option>
-                      <option value="billing">Billing &amp; Revenue</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
-                    name="subject"
-                    id="subject"
-                    required=""
-                    placeholder="Regarding..."
-                    value=""
-                  />
-                </div>
-                <div>
-                  <label className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    className="flex min-h-[80px] border text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
-                    name="message"
-                    id="message"
-                    rows="5"
-                    required=""
-                    placeholder="Your message here..."
-                  ></textarea>
-                </div>
-                <div>
-                  <button
-                    className="inline-flex items-center justify-center ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-10 w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-6 text-lg rounded-md transition-transform transform hover:scale-105"
-                    type="submit"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
-              <div className="md:col-span-2">
-                <div className="bg-slate-900/60 border my-6 border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-6 rounded-2xl h-full flex flex-col">
-                  <h3 className="text-2xl font-semibold mb-4 text-purple-400 flex items-center">
-                    <FontAwesomeIcon
-                      icon={faWandMagicSparkles}
-                      className="mr-3 text-2xl text-purple-400"
-                    />
-                    AI Assistant
-                  </h3>
-                  <div className="flex-grow bg-slate-800/50 rounded-lg p-4 space-y-4 overflow-y-auto h-64 max-h-96">
-                    <div className="flex items-start gap-3 max-w-[85%] mr-auto">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500">
-                        <FontAwesomeIcon
-                          icon={faRobot}
-                          className="text-xl text-white"
-                        />{" "}
-                      </div>
-                      <div className="p-3 rounded-lg text-sm bg-slate-700">
-                        Hello! I'm the CINE AI Assistant. I can help answer
-                        common questions. How can I assist you today?
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                      <button className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background px-4 text-xs h-auto py-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200">
-                        How do I release music?
-                      </button>
-                      <button className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background px-4 text-xs h-auto py-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200">
-                        How do I get paid?
-                      </button>
-                      <button className="inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background px-4 text-xs h-auto py-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200">
-                        How to create a support ticket?
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-8">
-            <div className="bg-slate-900/60 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-sky-400">
-                Contact Information
-              </h3>
-              <ul className="space-y-5 text-gray-300">
-                <li className="flex items-start">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="text-2xl text-sky-400 mr-4 mt-1 flex-shrink-0"
-                  />
-                  <div>
-                    <span class="font-semibold">Email:</span> <br />{" "}
-                    <a
-                      href="mailto:support@cinecms.com"
-                      className="hover:text-sky-300 transition-colors"
-                    >
-                      support@cinecms.com
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="text-2xl text-sky-400 mr-4 mt-1 flex-shrink-0"
-                  />
-                  <div>
-                    <span class="font-semibold">Phone:</span> <br />{" "}
-                    <a
-                      href="mailto:support@cinecms.com"
-                      className="hover:text-sky-300 transition-colors"
-                    >
-                      +1 (234) 567-890
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <FontAwesomeIcon
-                    icon={faClock}
-                    className="text-2xl text-sky-400 mr-4 mt-1 flex-shrink-0"
-                  />
-                  <div>
-                    <span class="font-semibold">Hours:</span> <br />{" "}
-                    <a
-                      href="mailto:support@cinecms.com"
-                      className="hover:text-sky-300 transition-colors"
-                    >
-                      Mon-Fri, 9am-5pm EST
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <FontAwesomeIcon
-                    icon={faLocation}
-                    className="text-2xl text-sky-400 mr-4 mt-1 flex-shrink-0"
-                  />
-                  <div>
-                    <span class="font-semibold">Address:</span> <br />{" "}
-                    <a
-                      href="mailto:support@cinecms.com"
-                      className="hover:text-sky-300 transition-colors"
-                    >
-                      123 Music Lane, Suite 100 Nashville, TN 37203, USA
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-slate-900/60 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-8 rounded-2xl">
-              <h3 className="text-2xl font-semibold mb-6 text-green-400">
-                Frequently Asked Questions
-              </h3>
+      <div>
+        <label htmlFor="email" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+          Email Address
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          value=""
+          className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+        />
+      </div>
+      <div>
+        <label htmlFor="phone" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+          Phone Number
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="+1 (555) 123-4567"
+          value=""
+          className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+        />
+      </div>
+      <div>
+        <label htmlFor="company" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+          Company / Label (Optional)
+        </label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          placeholder="Your Record Label"
+          value=""
+          className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+        />
+      </div>
+    </div>
 
-              <div className="space-y-4">
-                {faqItems.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="border border-slate-700 rounded-lg"
-                  >
-                    <button
-                      onClick={() => toggle(index)}
-                      className="w-full text-left px-4 py-4 flex justify-between items-center text-white font-medium focus:outline-none"
-                    >
-                      {faq.question}
-                      <FontAwesomeIcon
-                        icon={openIndex === index ? faChevronUp : faChevronDown}
-                        className="ml-2 text-green-400"
-                      />
-                    </button>
+    <div>
+      <label htmlFor="musicLink" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+        Link to Your Music (Optional)
+      </label>
+      <input
+        type="url"
+        id="musicLink"
+        name="musicLink"
+        placeholder="https://spotify.link/your-artist-profile"
+        value=""
+        className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+      />
+    </div>
 
-                    <div
-                      className={`px-4 pb-4 text-gray-300 text-sm transition-all duration-300 ease-in-out ${
-                        openIndex === index
-                          ? "max-h-screen opacity-100"
-                          : "max-h-0 overflow-hidden opacity-0"
-                      }`}
-                    >
-                      {faq.answer}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+    <div>
+      <label htmlFor="department" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+        Department
+      </label>
+      <button
+        type="button"
+        role="combobox"
+        aria-controls="radix-:rq:"
+        aria-expanded="false"
+        aria-autocomplete="none"
+        dir="ltr"
+        data-state="closed"
+        data-placeholder=""
+        className="flex h-10 items-center justify-between border text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+      >
+        <span style={{ pointerEvents: 'none' }}>Select a department...</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 opacity-50" aria-hidden="true" viewBox="0 0 24 24">
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </button>
+      <select
+        aria-hidden="true"
+        tabIndex={-1}
+        name="department"
+        style={{
+          position: 'absolute',
+          border: 0,
+          width: '1px',
+          height: '1px',
+          padding: 0,
+          margin: -1,
+          overflow: 'hidden',
+          clip: 'rect(0px, 0px, 0px, 0px)',
+          whiteSpace: 'nowrap',
+          overflowWrap: 'normal',
+        }}
+      >
+        <option value="support">General SupportFor technical issues, platform questions, or general inquiries.</option>
+        <option value="sales">Sales &amp; PartnershipsInterested in our whitelabel solutions or have a business proposal?</option>
+        <option value="billing">Billing &amp; RevenueFor all questions regarding payments, royalties, and financial statements.</option>
+      </select>
+    </div>
+
+    <div>
+      <label htmlFor="subject" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+        Subject
+      </label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        required
+        placeholder="Regarding..."
+        value=""
+        className="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+      />
+    </div>
+
+    <div>
+      <label htmlFor="message" className="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 block text-sm font-medium text-gray-300 mb-1">
+        Message
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows={6}
+        required
+        placeholder="Your message here..."
+        className="flex min-h-[80px] border text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-slate-800/80 border-slate-700 placeholder-gray-500 focus:ring-pink-500 focus:border-pink-500 rounded-md p-3"
+      ></textarea>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        className="inline-flex items-center justify-center whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-10 w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-6 text-lg rounded-md transition-transform transform hover:scale-105"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 h-5 w-5" viewBox="0 0 24 24">
+          <path d="m22 2-7 20-4-9-9-4Z"></path>
+          <path d="M22 2 11 13"></path>
+        </svg>
+        Send Message
+      </button>
+    </div>
+  </form>
+</div>
+<div className="space-y-8">
+  <div className="h-full" style={{ opacity: 1, transform: "none" }}>
+  <div className="bg-slate-900/60 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-6 rounded-2xl h-full flex flex-col">
+    <h3 className="text-2xl font-semibold mb-4 text-purple-400 flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="mr-3 text-purple-400"
+      >
+        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+        <path d="M5 3v4" />
+        <path d="M19 17v4" />
+        <path d="M3 5h4" />
+        <path d="M17 19h4" />
+      </svg>
+      AI Assistant
+    </h3>
+    <div className="flex-grow bg-slate-800/50 rounded-lg p-4 space-y-4 overflow-y-auto h-64 max-h-96">
+      <div className="flex items-start gap-3 max-w-[85%] mr-auto" style={{ opacity: 1, transform: "none" }}>
+        <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-bot"
+          >
+            <path d="M12 8V4H8" />
+            <rect width="16" height="12" x="4" y="8" rx="2" />
+            <path d="M2 14h2" />
+            <path d="M20 14h2" />
+            <path d="M15 13v2" />
+            <path d="M9 13v2" />
+          </svg>
         </div>
-      </main>
+        <div className="p-3 rounded-lg text-sm bg-slate-700">
+          Hello! I'm the CINE AI Assistant. I can help answer common questions. How can I assist you today?
+        </div>
+      </div>
+    </div>
+    <div className="mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2" style={{ opacity: 1, transform: "none" }}>
+        <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background px-4 text-xs h-auto py-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200">
+          How do I release music?
+        </button>
+        <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background px-4 text-xs h-auto py-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200">
+          How do I get paid?
+        </button>
+        <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background px-4 text-xs h-auto py-2 border-purple-500 text-purple-300 hover:bg-purple-500/20 hover:text-purple-200">
+          How to create a support ticket?
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  className="bg-slate-900/60 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-8 rounded-2xl"
+  style={{ opacity: 1, transform: "none" }}
+>
+  <h3 className="text-2xl font-semibold mb-6 text-sky-400">Contact Information</h3>
+  <ul className="space-y-5 text-gray-300">
+    <li className="flex items-start">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 text-sky-400 mr-4 mt-1 flex-shrink-0"
+      >
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </svg>
+      <div>
+        <span className="font-semibold">Email:</span>
+        <br />
+        <a href="mailto:support@cinecms.com" className="hover:text-sky-300 transition-colors">
+          support@cinecms.com
+        </a>
+      </div>
+    </li>
+    <li className="flex items-start">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 text-sky-400 mr-4 mt-1 flex-shrink-0"
+      >
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+      <div>
+        <span className="font-semibold">Phone:</span>
+        <br />
+        <a href="tel:+1234567890" className="hover:text-sky-300 transition-colors">
+          +1 (234) 567-890
+        </a>
+      </div>
+    </li>
+    <li className="flex items-start">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 text-sky-400 mr-4 mt-1 flex-shrink-0"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+      <div>
+        <span className="font-semibold">Hours:</span>
+        <br />
+        Mon-Fri, 9am-5pm EST
+      </div>
+    </li>
+    <li className="flex items-start">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 text-sky-400 mr-4 mt-1 flex-shrink-0"
+      >
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      <div>
+        <span className="font-semibold">Address:</span>
+        <br />
+        123 Music Lane, Suite 100
+        <br />
+        Nashville, TN 37203, USA
+      </div>
+    </li>
+  </ul>
+</div>
+  <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: 0.5 }}
+      className="bg-slate-900/60 border border-slate-700/50 shadow-2xl shadow-black/30 backdrop-blur-xl p-8 rounded-2xl"
+    >
+      <h3 className="text-2xl font-semibold mb-6 text-green-400">
+        Frequently Asked Questions
+      </h3>
+
+      <div className="w-full space-y-3">
+        {faqItems.map((item, index) => (
+          <div
+            key={index}
+            className="border border-slate-700 rounded-lg overflow-hidden"
+          >
+            <button
+              onClick={() => toggleAccordion(index)}
+              className="w-full flex justify-between items-center p-4 text-left text-gray-200 hover:bg-slate-800/40 transition"
+            >
+              <span>{item.question}</span>
+              <ChevronDown
+                className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
+                  openIndex === index ? "rotate-180 text-green-400" : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`overflow-hidden transition-all duration-300 ${
+                openIndex === index ? "max-h-40 p-4" : "max-h-0 p-0"
+              }`}
+            >
+              <p className="text-gray-400">{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+
+</div>
+         </div>
+          </section>
+        </main>
+      </div>
+     
       <Footer />
     </>
   );

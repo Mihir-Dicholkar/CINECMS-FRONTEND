@@ -13,3 +13,34 @@
 .animate-spin-slow {
   animation: spin-slow 5s linear infinite;
 }
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 8px; /* scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b; /* bg-slate-800 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #ec4899); /* purple → pink gradient */
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.7); /* glowing effect */
+  border: 2px solid transparent; /* optional, makes glow pop */
+  background-clip: padding-box;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover state */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a855f7, #f472b6); /* lighter purple → pink */
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.9); /* stronger glow */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 #1e293b;
+}
+
